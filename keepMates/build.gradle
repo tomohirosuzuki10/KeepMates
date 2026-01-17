@@ -1,6 +1,10 @@
+//使用するプラグインの定義
 plugins {
+	//Javaのプロジェクトであることを示す
 	id 'java'
+	//Spring Bootの便利な機能（アプリ起動やビルドなど）を提供
 	id 'org.springframework.boot' version '3.5.9'
+	//依存関係の管理を簡素化するため (ライブラリ同士のバージョンの相性を保つ)
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -8,32 +12,42 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 description = 'Demo project for Spring Boot'
 
+//Javaのバージョン設定
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
-
+//アノテーションプロセッサの依存関係をコンパイル時にも利用可能にする設定
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
 }
-
+//依存関係を取得するリポジトリの指定
 repositories {
+	//Maven Centralリポジトリを使用
 	mavenCentral()
 }
-
+//プロジェクトで使用するライブラリの依存関係を定義
 dependencies {
+	//データベース（Supabase/PostgreSQL）を簡単に扱うための道具
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//Webサーバー（Tomcat）を動かし、ブラウザとやり取りする道具
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//コードの簡略化 Getter/Setterを自動生成します。実行時には不要（コンパイル時のみ必要）
 	compileOnly 'org.projectlombok:lombok'
+	//PostgreSQLデータベースに接続するためのドライバ
 	runtimeOnly 'org.postgresql:postgresql'
+	//Lombokの処理係。 コンパイル中にコードを書き換えるための特殊な設定
 	annotationProcessor 'org.projectlombok:lombok'
+	//JUnitなど、テストコードを書く時にだけ必要なライブラリ
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//Eclipseなどでテストを実行する時に必要
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
-
+//テストタスクの設定
 tasks.named('test') {
+	//JUnit 5という最新のテストエンジンを起動するためのスイッチ
 	useJUnitPlatform()
 }
