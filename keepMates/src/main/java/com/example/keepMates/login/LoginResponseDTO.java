@@ -1,5 +1,7 @@
 package com.example.keepMates.login;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 /**
@@ -9,9 +11,11 @@ import lombok.Data;
 public class LoginResponseDTO {
 	
 	// 処理結果コード
-	private String ResultCode;
+	@JsonProperty("resultCode")
+	private String resultCode;
 	
 	// ユーザー名
+	@JsonProperty("userName")
 	private String userName;
 	
 }
