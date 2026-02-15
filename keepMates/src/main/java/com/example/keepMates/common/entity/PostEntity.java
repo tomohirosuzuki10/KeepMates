@@ -1,9 +1,9 @@
 package com.example.keepMates.common.entity;
 
-import java.sql.Timestamp;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,6 +15,7 @@ import lombok.Data;
 public class PostEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;	 // 投稿ID (Integer / PK)
 	
@@ -29,9 +30,5 @@ public class PostEntity {
 
 	@Column(name = "age")
 	private String age; // 年齢 (String)
-
-	@Column(name = "created_at")
-	private Timestamp createdAt; // 更新日時 (Timestamp)
-	
 
 }

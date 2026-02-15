@@ -21,7 +21,7 @@ public class LoginControllerImpl implements LoginController {
      * 成功なら 200 OK + コード"00"と名前を返す
      */
 	@Override
-	@PostMapping("/api/login")
+	@PostMapping("/login")
 	public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDto) {
 		// ログインサービスを呼び出してレスポンスDTOを取得
 		try {

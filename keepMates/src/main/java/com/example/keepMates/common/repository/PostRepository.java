@@ -13,10 +13,13 @@ import com.example.keepMates.common.entity.PostEntity;
 @Repository //DBアクセスを行うクラスであることを示すアノテーション
 public interface PostRepository extends JpaRepository<PostEntity, Integer>  {
 	
+	// 投稿をIDの降順で全件取得するメソッド
 	List<PostEntity> findAllByOrderByIdDesc();
 	
+	// 年齢で絞り込んで投稿をIDの降順で取得するメソッド
 	List<PostEntity> findByAgeOrderByIdDesc(String age);
 	
+	// 投稿を保存するメソッド
 	PostEntity save(PostEntity postEntity);
 
 }

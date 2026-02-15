@@ -6,9 +6,6 @@ import lombok.Data;
 @Data
 public class PostRequestDTO {
 
-	@JsonProperty("id")
-    private Integer id;
-
     @JsonProperty("userId")
     private Integer userId;
 
